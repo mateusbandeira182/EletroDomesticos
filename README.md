@@ -42,7 +42,7 @@ Marcas podem ser alteradas e excluidas também
 **/marcas** GET
 Lista todas as marcas
 
-**marcas/create** GET
+**/marcas/create** GET
 Formulário de cadastro das marcas
 
 **/marcas** POST
