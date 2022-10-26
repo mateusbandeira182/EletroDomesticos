@@ -27,6 +27,7 @@ Como o projeto está público, então vamos fazer o seguinte:
 - Nesse projeto existe uma classe para preencher alguns itens, execute o comando ``php artisan db:seed --class=MarcaSeeder``;
 - No terminal rode o comando ``php artisan key:generate``, para refazer as hashs do laravel;
 - Para rodar o projeto, digite ``php artisan serve``;
+- Para acessar o projeto é: http://localhost:8000/
 
 ## Projeto
 
