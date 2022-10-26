@@ -64,6 +64,6 @@ class EletrodomesticoController extends Controller
     public function destroy(Eletrodomestico $eletrodomestico)
     {
         $eletrodomestico->delete();
-        return to_route('eletrodomesticos.index', "Eletrodoméstico '{$eletrodomestico->nome}' removido com sucesso");
+        return to_route('eletrodomesticos.index')->with('mensagem.sucesso', "Eletrodoméstico '{$eletrodomestico->nome}' removido com sucesso");
     }
 }

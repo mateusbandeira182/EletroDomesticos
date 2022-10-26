@@ -1,66 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Teste de desenvolvedor FullStack Laravel
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Neste projeto está descrito o processo de como baixar o projeto, instalar as dependências do laravel utilizando composer, instalar as dependências de FrontEnd usando o nodejs
 
-## About Laravel
+## Baixando e instalando o projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Pré-requisitos
+- Você vai precisar ter o GIT instalado em sua máquina;
+- Versão 8.1 do PHP;
+- Composer instalado;
+- NodeJS e NPM instalados
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Instalando o projeto
+Como o projeto está público, então vamos fazer o seguinte:
+- Abra o terminal de sua maquina;
+- Vá até à pasta onde deseja baixar o projeto;
+- Digite o seguinte código ``git clone https://github.com/mateusbandeira182/EletroDomesticos.git``;
+- Após a cópia do projeto, entre na pasta do projeto pelo terminal;
+- Na pasta, usando o terminal, digite o comando ``composer install``. Esse comando instala as dependências do PHP;
+- Depois execute o comando ``npm install``, Esse comando instala as dependências do FrontEnd;
+- Para compilar os arquivos do Front-End execute o comando ``npm run dev``;
+- Agora vá até o arquivo .env.example e faça uma cópia dele no mesmo caminho, porém com o nome de .env;
+- Você deve todas as diretivas de banco de dados do arquivo .env, deixando apenas a diretiva DB_CONNECTION=mysql;
+- Após remover as outras configurações, troque a configuração de mysql, para sqlite;
+- Vá até à pastas database, e crie um arquivo com o nome de database.sqlite;
+- Volte ao terminal e execute o comando ``php artisan migrate``;
+- Nesse projeto existe uma classe para preencher alguns itens, execute o comando ``php artisan db:seed --class=MarcaSeeder``;
+- No terminal rode o comando ``php artisan key:generate``, para refazer as hashs do laravel;
+- Para rodar o projeto, digite ``php artisan serve``;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Projeto
 
-## Learning Laravel
+O projeto consiste em um cadastro de eletrodomésticos, além de realizar atualização e exclusão
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Também tempos um cadastro para marcas, mesmo ela já sendo inseridas no banco pelo comando do artisan;
+Marcas podem ser alteradas e excluidas também
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Marcas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Único requisito necessária a essa requisição é o nome da marca
 
-## Laravel Sponsors
+**/marcas** GET
+Lista todas as marcas
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**marcas/create** GET
+Formulário de cadastro das marcas
 
-### Premium Partners
+**/marcas** POST
+Requisito necessário é o **nome**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**/marcas/{marca}/edit** GET
+Formulário de Edição
 
-## Contributing
+**/marcas/{marca}** PUT
+Rota de update de marca
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Eletrodomésticos
 
-## Code of Conduct
+São necessários os requisitos: nome, descrição, tensão e id da marca
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**/eletrodomesticos** GET
+Lista todas as Eletrodomésticos
 
-## Security Vulnerabilities
+**/eletrodomesticos/create** GET
+Formulário de cadastro de eletrodomésticos
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**/eletrodomesticos** POST
+Requisitos necessários são o **nome**, **descrição**, **tensão**, **marca_id**
 
-## License
+**/eletrodomesticos/{eletrodomestico}** GET
+Mostra detalhes do eletrodoméstico
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**/eletrodomesticos/{eletrodomestico}/edit** GET
+Formulário de Edição
+
+**/eletrodomesticos/{eletrodomestico}** PUT
+Rota de update de eletrodoméstico
+
+## Considerações finais
+
+Bom o Back-End foi desenvolvido em Php, usando diversas facilidades que o framework me oferece,
+Nos dos modelos eu estou usando injeção de dependência direto no controller, fiz isso para separar melhor as coisas e deixar um controller mais legível.
+
+Devo confessar que ainda não domino nenhum framework de Javascript, mais já é algo que estou estudando nesse momento, vendo a necessidade do mercado.
+
+No projeto eu usei Bootstrap como framework de estilos e as suas funções de Javascript.
+
+Para o desenvolvimento do projeto de front-end, acabou que usei o blade, que já vem junto do Laravel, por ser mais assertivo e rápido no desenvolvimento.
+
+Qualquer dúvida pode entrar em contato que eu eutou a disposição
+
+Mateus de Oliveira Bandeira
+(62) 98131-0988

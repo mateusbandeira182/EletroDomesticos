@@ -15,6 +15,8 @@
                         <span id="buttons" class="d-flex">
                             <a href="{{ route('marcas.edit', $marca->id) }}" class="btn btn-info me-2">Editar</a>
                             <form action="{{ route('marcas.destroy', $marca->id) }}" id="formdelete" method="post">
+                                @csrf
+                                @method('DELETE')
                                 <button class="btn btn-danger">Excluir</button>
                             </form>
                         </span>

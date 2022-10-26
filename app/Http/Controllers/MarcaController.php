@@ -32,7 +32,7 @@ class MarcaController extends Controller
     public function store(MarcaFormRequest $request)
     {
         $marca = $this->marcaRepo->add($request);
-        return to_route('marca.index')->with('mensagem.sucesso', "Marca '{$marca->nome}' cadastrada com sucesso");
+        return to_route('marcas.index')->with('mensagem.sucesso', "Marca '{$marca->nome}' cadastrada com sucesso");
     }
 
     public function edit(Marca $marca)
@@ -43,12 +43,13 @@ class MarcaController extends Controller
     public function update(MarcaFormRequest $request, Marca $marca)
     {
         $marca->fill($request->all());
-        return to_route('marca.index')->with('mensagem.sucesso', "Marca '{$marca->nome}' atualizada com sucesso");
+        $marca->save();
+        return to_route('marcas.index')->with('mensagem.sucesso', "Marca '{$marca->nome}' atualizada com sucesso");
     }
 
     public function destroy(Marca $marca)
     {
         $marca->delete();
-        return to_route('marca.index')->with('mensagem.sucesso', "Marca '{$marca->nome}' removida com sucesso");
+        return to_route('marcas.index')->with('mensagem.sucesso', "Marca '{$marca->nome}' removida com sucesso");
     }
 }

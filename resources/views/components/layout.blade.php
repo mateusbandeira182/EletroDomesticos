@@ -13,12 +13,12 @@
     <main>
         <div class="container">
             @isset($mensagemSucesso)
-                <div class="alert alert-success">
+                <div class="alert alert-success mt-3">
                     {{ $mensagemSucesso }}
                 </div>
             @endisset
             @if($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger mt-3">
                     <ul>
                         @foreach($errors->all() as $error)
                           <li>{{ $error }}</li>
